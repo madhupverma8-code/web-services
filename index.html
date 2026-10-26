@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhup Verma | Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            background: #ffffff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a3a6b;
+            letter-spacing: 1px;
+        }
+
+        .btn-contact {
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-contact:hover {
+            background: #128C7E;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a3a6b, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: #ffb800;
+            color: #1a3a6b;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #e5a600;
+            transform: translateY(-2px);
+        }
+
+        /* Pricing Plans Section */
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #1a3a6b;
+            margin-top: 60px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 5%;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            width: 320px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .plan-card.popular {
+            border: 2px solid #1a3a6b;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a3a6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .plan-card h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 32px;
+            color: #1a3a6b;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features li::before {
+            content: '✔️';
+            margin-right: 10px;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .btn-plan {
+            display: block;
+            text-align: center;
+            background: #f0f2f5;
+            color: #1a3a6b;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-plan:hover, .popular .btn-plan {
+            background: #1a3a6b;
+            color: white;
+        }
+
+        /* Additional Costs Section */
+        .additional-costs {
+            background: #fff3cd;
+            border-left: 5px solid #ffb800;
+            padding: 30px;
+            max-width: 850px;
+            margin: 0 auto 60px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .additional-costs h3 {
+            color: #856404;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .additional-costs ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .additional-costs li {
+            margin-bottom: 12px;
+        }
+
+        /* Toggle Button Styles (For DLT & Razorpay) */
+        .toggle-btn {
+            background: #fff;
+            border: 1px solid #856404;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: #856404;
+            color: #fff;
+        }
+
+        .process-box {
+            display: none;
+            background: #ffffff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #e0d4a8;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .process-box ol {
+            margin-left: 20px;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            padding: 20px;
+        }
+
+        .feature-box h4 {
+            color: #1a3a6b;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        /* Terms & Conditions */
+        .terms-section {
+            background: #e9ecef;
+            padding: 50px 5%;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .terms-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .terms-content h3 {
+            color: #1a3a6b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .terms-content ol {
+            padding-left: 20px;
+        }
+
+        .terms-content li {
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a3a6b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .plan-card.popular { transform: scale(1); }
+            .section-title { font-size: 26px; }
+            .toggle-btn { display: block; margin: 10px 0 0 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Madhup Verma</div>
+        <a href="https://wa.me/919140281870?text=Hello%20Madhup,%20I%20am%20interested%20in%20getting%20a%20website%20built." target="_blank" class="btn-contact">Contact Now</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Professional Websites Designed to Grow Your Business.</h1>
+        <p>Get a modern, fast, and fully responsive website for your business. Delivered within 3 to 7 days with full admin control.</p>
+        <a href="#plans" class="btn-primary">View Our Plans</a>
+    </section>
+
+    <!-- Pricing Plans -->
+    <h2 class="section-title" id="plans">Our Services & Plans</h2>
+    
+    <!-- Custom Design Highlight -->
+    <p class="section-subtitle">
+        🎨 <strong>100% Custom Design:</strong> Choose your own colors, fonts, and layout. We build it exactly the way you want!
+    </p>
+    
+    <div class="plans-container">
+        
+        <!-- Plan 1 -->
+        <div class="plan-card">
+            <h3>Starter Plan</h3>
+            <div class="price">₹15,000</div>
+            <ul class="features">
+                <li>3 to 5 Pages (Home, About, etc.)</li>
+                <li>Custom Colors & Layout</li>
+                <li>WhatsApp & Call Integration</li>
+                <li>Google Maps Location</li>
+                <li>Contact Form Setup</li>
+                <li>No Admin Panel or OTP System</li>
+            </ul>
+            <!-- WhatsApp Link with Plan Name -->
+            <a href="https://wa.me/919140281870?text=Hello%20Madhup,%20I%20want%20to%20buy%20the%20Starter%20Plan." target="_blank" class="btn-plan">Select Plan</a>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="plan-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <h3>Professional Plan</h3>
+            <div class="price">₹30,000</div>
+            <ul class="features">
+                <li>Unlimited Pages</li>
+                <li>Custom Premium Design</li>
+                <li><strong>Admin Panel (Control your data)</strong></li>
+                <li>Google Search Setup Guarantee</li>
+                <li>WhatsApp & Call Integration</li>
+                <li>7 Days Free Bug Support</li>
+                <li><strong>OTP Verification</strong> - *Extra Cost*</li>
+            </ul>
+            <!-- WhatsApp Link with Plan Name -->
+            <a href="https://wa.me/919140281870?text=Hello%20Madhup,%20I%20want%20to%20buy%20the%20Professional%20Plan." target="_blank" class="btn-plan">Select Plan</a>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="plan-card">
+            <h3>E-Commerce Plan</h3>
+            <div class="price">₹50,000+</div>
+            <ul class="features">
+                <li>Everything in Professional Plan</li>
+                <li>Payment Gateway Integration</li>
+                <li>Add to Cart & Billing System</li>
+                <li>Order Tracking Dashboard</li>
+                <li>Product Management System</li>
+                <li>Advanced Security Features</li>
+                <li><strong>OTP Verification</strong> - *Extra Cost*</li>
+            </ul>
+            <!-- WhatsApp Link with Plan Name -->
+            <a href="https://wa.me/919140281870?text=Hello%20Madhup,%20I%20want%20to%20buy%20the%20E-Commerce%20Plan." target="_blank" class="btn-plan">Select Plan</a>
+        </div>
+
+    </div>
+
+    <!-- Additional Costs Section -->
+    <div class="additional-costs">
+        <h3>ℹ️ Important: Additional Costs (Paid by Client)</h3>
+        <p style="margin-bottom: 15px; font-size: 14px;">The prices mentioned above are strictly for Website Design & Development. The following costs are not included and must be paid directly by the client:</p>
+        
+        <ul>
+            <li><strong>Domain Name:</strong> Approx. ₹800 - ₹1,200 / year.</li>
+            <li><strong>Web Hosting:</strong> Approx. ₹2,000 - ₹4,000 / year.</li>
+            <li><strong>Database & Server:</strong> Approx. ₹500 - ₹1,000 / month for high traffic (if required).</li>
+            
+            <li>
+                <strong>SMS OTP (DLT Registration):</strong> 
+                One-time DLT fee ₹5,000 - ₹6,000 + ₹0.15 - ₹0.25 per SMS. 
+                <button class="toggle-btn" onclick="toggleBox('dltProcess')">View Process 🔽</button>
+                
+                <div id="dltProcess" class="process-box">
+                    <strong>How to do DLT Registration?</strong>
+                    <ol>
+                        <li>The client must register on the telecom operator's DLT portal (Jio, Airtel, Vi, BSNL).</li>
+                        <li>Upload company documents (GST, PAN, Aadhaar) and sign an authorization letter.</li>
+                        <li>Verify via OTP on the registered mobile number.</li>
+                        <li>Pay the registration fee directly to the operator.</li>
+                        <li>Once approved, share the DLT credentials with us to send OTPs.</li>
+                    </ol>
+                </div>
+            </li>
+
+            <li><strong>WhatsApp OTP:</strong> ₹0 - ₹2,000 (Setup) + ₹0.12 - ₹0.18 per message. (No DLT needed).</li>
+            <li><strong>Email Verification:</strong> Free up to 100-300 emails/day. Paid plans start from ₹800 for 10,000 emails.</li>
+            
+            <li>
+                <strong>Payment Gateway (e.g., Razorpay):</strong> ₹300 one-time registration fee + approx. 2% transaction charges + 18% GST on the fee.
+                <button class="toggle-btn" onclick="toggleBox('razorpayProcess')">View Process 🔽</button>
+                
+                <div id="razorpayProcess" class="process-box">
+                    <strong>How to register for Razorpay?</strong>
+                    <ol>
+                        <li>Visit razorpay.com and create a new account.</li>
+                        <li>Select "Individual" or "Company" based on your business type.</li>
+                        <li>Upload required documents (PAN Card, GST Certificate, Bank Statement/Cancelled Cheque).</li>
+                        <li>Verify your email and mobile number via OTP.</li>
+                        <li>Pay the one-time setup fee (₹300) to activate your account.</li>
+                        <li>Share the API keys with us to integrate it into your website.</li>
+                    </ol>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="features-grid">
+            <div class="feature-box">
+                <h2>⚡</h2>
+                <h4>Fast Delivery</h4>
+                <p>Get your website ready in just 3 to 7 days.</p>
+            </div>
+            <div class="feature-box">
+                <h2>📱</h2>
+                <h4>Mobile Friendly</h4>
+                <p>Perfectly optimized for mobile, tablet, and desktop.</p>
+            </div>
+            <div class="feature-box">
+                <h2>🔍</h2>
+                <h4>Google Search Guarantee</h4>
+                <p>We set up SEO to help your site rank on Google.</p>
+            </div>
+            <div class="feature-box">
+                <h2>🔒</h2>
+                <h4>100% Secure</h4>
+                <p>Built with advanced security to protect your data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions -->
+    <section class="terms-section">
+        <div class="terms-content">
+            <h3>Terms & Conditions</h3>
+            <ol>
+                <li><strong>Project Initiation & Payment:</strong> To start the work, a 50% advance payment of the total agreed amount is mandatory. The remaining 50% must be paid immediately upon website delivery.</li>
+                <li><strong>Domain & Hosting:</strong> The client is solely responsible for purchasing the Domain Name and Web Hosting from their own account.</li>
+                <li><strong>Third-Party Services:</strong> If the website requires a database, OTP services (SMS/WhatsApp/Email), or a payment gateway (e.g., Razorpay), the client must create their own accounts and bear all costs directly.</li>
+                <li><strong>DLT Registration:</strong> For SMS OTPs, the client must complete the DLT registration with the required documents and OTP verification. We only assist; the client bears the full cost.</li>
+                <li><strong>Timeline:</strong> The estimated delivery time is 3 to 7 working days after receiving the advance payment and content.</li>
+                <li><strong>Content & Data:</strong> The client is responsible for providing all text, images, and data. Extra charges apply if we provide content.</li>
+                <li><strong>Support & Maintenance:</strong> Free support for 7 days for bug fixes. After that, maintenance will be charged separately.</li>
+                <li><strong>Ownership:</strong> Once the full payment is cleared, the website code and admin credentials will be fully transferred to the client.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Madhup Verma. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Toggling Boxes -->
+    <script>
+        function toggleBox(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
